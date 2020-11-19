@@ -1,0 +1,32 @@
+#logging:
+#  level: info
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+  datasource:
+    name: test
+    url: jdbc:mysql://localhost:3306/reportstatistic?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: root
+    password: Cheng80233
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 180000
+      pool-name: MidplatformHikariCP
+      maximum-pool-size: 15
+      auto-commit: true
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+    schema:
+      - classpath:init.sql
+    data:
+      - classpath:data.sql
+    initialization-mode: always
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:
